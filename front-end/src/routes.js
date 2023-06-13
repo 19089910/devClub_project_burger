@@ -9,7 +9,7 @@ function App(){
         <Router>
             <Routes>
                 <Route path="/" Component={Home}/>
-                <Route path="/peditos" Component={Orders}/>
+                <Route path="/pedidos" Component={Orders}/>
             </Routes>
         </Router>
     )
