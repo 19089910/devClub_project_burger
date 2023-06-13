@@ -17,6 +17,13 @@ export const Input = styled.input`
     border-radius: 14px;
 
     margin-bottom: 42px;
+
+    //LETRA INTERNA: 
+    padding-left: 25px; 
+    font-weight: 400; 
+    font-size: 20 px; 
+    line-height: 28px; 
+    color: #FFFFFF; 
 `;
 
 export const Button = styled(Link)`
