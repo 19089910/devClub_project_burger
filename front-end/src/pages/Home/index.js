@@ -5,11 +5,11 @@ import Conteiner from '../../components/Container';
 import Image from '../../components/Image';
 import H1 from '../../components/Title'
 import ContainerItens from '../../components/ContainerItens'
+import Button from '../../components/Button'
 
 import {
   InputLabel,
   Input,
-  Button,
 } from "./styles";
 
 function Home() {
@@ -28,7 +28,7 @@ function Home() {
         <InputLabel>Nome do Cliente</InputLabel>
         <Input ref={inputName} placeholder='Steve Jobs'></Input>
 
-        <Button to="/pedidos" onClick={addNewOrder}>Novo Pedido</Button>
+        <Button isHome={true} to="/pedidos" onClick={addNewOrder}>Novo Pedido</Button>
       </ContainerItens>
 
     </Conteiner>

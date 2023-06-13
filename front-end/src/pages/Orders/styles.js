@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const ContainerOrders = styled.div`
     width: 342px;
     height: 101px;
+    margin-bottom: 18px;
 
     background: rgba(255, 255, 255, 0.25);
     border-radius: 14px;
@@ -39,6 +39,3 @@ export const ButtonTrash = styled.button`
     cursor: pointer;
 `;
 
-export const Button = styled(Link)`
-
-`;

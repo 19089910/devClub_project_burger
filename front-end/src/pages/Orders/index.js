@@ -6,9 +6,9 @@ import Conteiner from '../../components/Container';
 import Image from '../../components/Image'
 import H1 from '../../components/Title'
 import ContainerItens from '../../components/ContainerItens'
+import Button from '../../components/Button'
 
 import {
-  Button,
   ContainerOrders,
   LabelOrder,
   LabelName,

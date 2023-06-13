@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const InputLabel = styled.p`
     color: #EEEEEE;
@@ -26,7 +25,4 @@ export const Input = styled.input`
     color: #FFFFFF; 
 `;
 
-export const Button = styled(Link)`
-
-`;
 
