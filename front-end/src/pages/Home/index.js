@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import axios from 'axios';
 import HomeBurger from '../../assert/homeBurger.svg'
 
 import Conteiner from '../../components/Container';
@@ -13,9 +14,17 @@ import {
 } from "./styles";
 
 function Home() {
-  const inputOrder = [];
-  const inputName = [];
-  function addNewOrder(){}
+  const inputOrder = useRef();
+  const inputName = useRef();
+  const [ clientOrder, setClientOrder] = useState([])
+
+  async function addNewOrder(){
+    const {data: NewClientOrder} = await axios.post("http://localhost:3001/order", {
+      order: inputOrder.current.value,
+      name: inputName.current.value
+    });
+    setClientOrder([...clientOrder, NewClientOrder])
+  }
 
   return (
     <Conteiner>
@@ -28,7 +37,7 @@ function Home() {
         <InputLabel>Nome do Cliente</InputLabel>
         <Input ref={inputName} placeholder='Steve Jobs'></Input>
 
-        <Button isHome={true} to="/pedidos" onClick={addNewOrder}>Novo Pedido</Button>
+        <Button isHome={true}  onClick={addNewOrder} to="/pedidos">Novo Pedido</Button>
       </ContainerItens>
 
     </Conteiner>

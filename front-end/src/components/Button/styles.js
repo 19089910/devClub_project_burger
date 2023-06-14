@@ -5,6 +5,7 @@ export const Button = styled(Link)`
     width: 342px;
     height: 68px;
     margin-top: 76px;
+    margin-bottom: 50px;
     background: ${props => props.isHome ? `#D93856`:`rgba(255, 255, 255, 0.14)`};
     cursor: pointer;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import OrderBurger from '../../assert/OrderBurger.svg'
 import Trash from '../../assert/Trash.svg'
 
@@ -14,11 +14,26 @@ import {
   LabelName,
   ButtonTrash,
 } from "./styles";
+import axios from 'axios';
 
 function Home() {
-  function addNewOrder(){}
-  const Order = ['1 Coca-Cola, 1 X-Salada']
-  const Name = ['Steve Jobs']
+
+  const [clintOrder, setClientOrder] = useState([]);
+  useEffect(() => {
+    async function fetchClientOrder(){
+      const { data : newClientOrder } = await axios.get("http://localhost:3001/order");
+      setClientOrder(newClientOrder)
+    }
+    fetchClientOrder()
+  }, [])
+
+  async function deletClientOrder(cliteOrderId){
+    await axios.delete(`http://localhost:3001/order/${cliteOrderId}`)
+    
+    const newClientOrder = clintOrder.filter( clientOrder => clientOrder.id !== cliteOrderId)
+    console.log(newClientOrder)
+    setClientOrder(newClientOrder)
+  }
 
   return (
     <Conteiner>
@@ -27,19 +42,22 @@ function Home() {
       <ContainerItens>
 
         <ul>
-          <ContainerOrders>
-            <div>
-              <LabelOrder>{Order}</LabelOrder>
-              <LabelName>{Name}</LabelName>
-            </div>
-            <div>
-              <ButtonTrash>
-                <img alt='lata-de-lixo' src={Trash}/>
-              </ButtonTrash> 
-            </div>
-          </ContainerOrders>
+          {clintOrder.map((clintOrder)=> (
+            <ContainerOrders key={clintOrder.id}>
+              <div>
+                <LabelOrder>{clintOrder.order}</LabelOrder>
+                <LabelName>{clintOrder.name}</LabelName>
+              </div>
+              <div>
+                <ButtonTrash onClick={() => deletClientOrder(clintOrder.id)}>
+                  <img alt='lata-de-lixo' src={Trash}/>
+                </ButtonTrash> 
+              </div>
+            </ContainerOrders>
+          ))}
         </ul>
-        <Button to="/" onClick={addNewOrder}>Voltar</Button>
+
+        <Button to="/" >Voltar</Button>
       </ContainerItens>
     </Conteiner>
   );
